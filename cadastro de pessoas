@@ -3,9 +3,9 @@ import java.util.Scanner;
 
 // Classe Pessoa
 class Pessoa {
-    private int codigo;
-    private String nome;
-    private String tipoPessoa;
+    private final int codigo;
+    private final String nome;
+    private final String tipoPessoa;
 
     public Pessoa(int codigo, String nome, String tipoPessoa) {
         this.codigo = codigo;
@@ -33,7 +33,7 @@ class Pessoa {
 
 // Classe principal
 public class CadastroPessoas {
-    private static ArrayList<Pessoa> listaPessoas = new ArrayList<>();
+    private static final ArrayList<Pessoa> listaPessoas = new ArrayList<>();
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -48,19 +48,14 @@ public class CadastroPessoas {
             scanner.nextLine(); // Consumir a quebra de linha
 
             switch (opcao) {
-                case 1:
-                    cadastrarPessoa(scanner);
-                    break;
-                case 2:
-                    listarPessoas();
-                    break;
-                case 3:
+                case 1 -> cadastrarPessoa(scanner);
+                case 2 -> listarPessoas();
+                case 3 -> {
                     System.out.println("Encerrando o programa...");
                     scanner.close();
                     System.exit(0);
-                    break;
-                default:
-                    System.out.println("Opção inválida! Tente novamente.");
+                }
+                default -> System.out.println("Opção inválida! Tente novamente.");
             }
         }
     }
